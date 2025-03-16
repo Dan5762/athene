@@ -61,33 +61,45 @@
     <main>
       <section class="events-section">
         <h2>Upcoming Running Events</h2>
-        <div class="event-cards">
-          <div class="event-card">
-            <h3>City Park 5K Run</h3>
-            <p class="event-date"><strong>Date:</strong> November 12, 2023</p>
-            <p class="event-time"><strong>Time:</strong> 9:00 AM - 11:00 AM</p>
-            <p class="event-location"><strong>Location:</strong> City Park, Main Entrance</p>
-            <p class="event-description">Join us for a casual 5K run through beautiful City Park. All fitness levels welcome! Refreshments provided after the run.</p>
-            <a href="https://forms.gle/exampleform1" class="event-register" target="_blank">Register Now</a>
-          </div>
-          <div class="event-card">
-            <h3>Winter Half Marathon</h3>
-            <p class="event-date"><strong>Date:</strong> December 5, 2023</p>
-            <p class="event-time"><strong>Time:</strong> 7:00 AM - 11:00 AM</p>
-            <p class="event-location"><strong>Location:</strong> Riverside Trail</p>
-            <p class="event-description">Challenge yourself with our scenic half marathon route along the river. Medals for all finishers and prizes for top performers.</p>
-            <a href="https://forms.gle/exampleform2" class="event-register" target="_blank">Register Now</a>
-          </div>
-          <div class="event-card">
-            <h3>Trail Running Adventure</h3>
-            <p class="event-date"><strong>Date:</strong> January 20, 2024</p>
-            <p class="event-time"><strong>Time:</strong> 8:30 AM - 12:00 PM</p>
-            <p class="event-location"><strong>Location:</strong> Mountain Ridge Trails</p>
-            <p class="event-description">Explore the beautiful mountain trails in this guided group run. 10K and 15K route options available. Post-run snacks and social gathering included.</p>
-            <a href="https://forms.gle/exampleform3" class="event-register" target="_blank">Register Now</a>
-          </div>
+        <div class="event-cards" id="eventCardsContainer">
+          <div id="loadingIndicator">Loading events...</div>
+          <!-- Event cards will be dynamically added here -->
         </div>
       </section>
     </main>
+    <script>
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      const eventCardsContainer = document.getElementById('eventCardsContainer');
+
+      // Show loading indicator
+      loadingIndicator.style.display = 'block';
+
+      fetch('data/events.json')
+        .then(response => response.json())
+        .then(events => {
+          // Hide loading indicator
+          loadingIndicator.style.display = 'none';
+
+          events.forEach(event => {
+            const eventCard = document.createElement('div');
+            eventCard.classList.add('event-card');
+
+            eventCard.innerHTML = `
+              <h3>${event.title}</h3>
+              <p class="event-date"><strong>Date:</strong> ${event.date}</p>
+              <p class="event-time"><strong>Time:</strong> ${event.time}</p>
+              <p class="event-location"><strong>Location:</strong> ${event.location}</p>
+              <p class="event-description">${event.description}</p>
+              <a href="${event.registerLink}" class="event-register" target="_blank">Register Now</a>
+            `;
+
+            eventCardsContainer.appendChild(eventCard);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          loadingIndicator.textContent = 'Error loading events.';
+        });
+    </script>
   </body>
 </html>

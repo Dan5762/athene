@@ -1,0 +1,26 @@
+[
+  {
+    "title": "City Park 5K Run",
+    "date": "November 12, 2023",
+    "time": "9:00 AM - 11:00 AM",
+    "location": "City Park, Main Entrance",
+    "description": "Join us for a casual 5K run through beautiful City Park. All fitness levels welcome! Refreshments provided after the run.",
+    "registerLink": "https://forms.gle/exampleform1"
+  },
+  {
+    "title": "Winter Half Marathon",
+    "date": "December 5, 2023",
+    "time": "7:00 AM - 11:00 AM",
+    "location": "Riverside Trail",
+    "description": "Challenge yourself with our scenic half marathon route along the river. Medals for all finishers and prizes for top performers.",
+    "registerLink": "https://forms.gle/exampleform2"
+  },
+  {
+    "title": "Trail Running Adventure",
+    "date": "January 20, 2024",
+    "time": "8:30 AM - 12:00 PM",
+    "location": "Mountain Ridge Trails",
+    "description": "Explore the beautiful mountain trails in this guided group run. 10K and 15K route options available. Post-run snacks and social gathering included.",
+    "registerLink": "https://forms.gle/exampleform3"
+  }
+]

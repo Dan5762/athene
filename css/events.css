@@ -72,3 +72,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+#loadingIndicator {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #555;
+}
